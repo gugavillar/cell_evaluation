@@ -1,3 +1,10 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["@rocketseat/eslint-config/react", "next/core-web-vitals"],
+  "rules": {
+    "sort-imports": ["error", {
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+        "allowSeparatedGroups": true
+    }]
+  }
 }
