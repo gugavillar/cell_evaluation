@@ -1,19 +1,23 @@
-import { Header, Question } from '@/common/components'
+import { Header } from '@/common/components'
 import { TODAY } from '@/common/constants'
 import { returnBrazilianDate } from '@/common/formatters'
 
+import { HandlerQuestionForm } from '@/common/modules'
+
 import { Fragment } from 'react'
 
-export default function Home() {
+const formattedToday = returnBrazilianDate(TODAY)
+
+export default function Evaluation() {
   const name = 'Vida'
-  const formattedToday = returnBrazilianDate(TODAY)
+
   return (
     <Fragment>
       <Header
         title={`Realize a avaliação da célula ${name} no dia ${formattedToday}`}
         subtitle="Teste"
       />
-      <Question questionTitle="Como você avalia o conteúdo abordado" />
+      <HandlerQuestionForm />
     </Fragment>
   )
 }

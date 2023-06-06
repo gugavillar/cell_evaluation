@@ -11,13 +11,18 @@
     "check-types": "tsc --noemit"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.6.1",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@hookform/resolvers": "^3.1.0",
+    "date-fns": "^2.30.0",
     "framer-motion": "^10.12.16",
     "next": "13.4.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.44.3",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^1.2.0",
