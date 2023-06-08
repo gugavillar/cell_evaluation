@@ -20,7 +20,7 @@ export const SelectionButton = forwardRef((props: any, ref: any) => {
         fontSize="lg"
         fontWeight={600}
         _checked={{
-          bg: 'green.500',
+          bg: 'purple',
         }}
       >
         {props.children}

@@ -7,8 +7,8 @@ type LayoutProps = {
 
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <Box mx="auto" maxW="64rem">
-      <Box p={6}>{children}</Box>
+    <Box>
+      <Box>{children}</Box>
     </Box>
   )
 }
