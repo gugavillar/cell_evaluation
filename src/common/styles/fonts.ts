@@ -1,5 +1,3 @@
-import { extendTheme } from '@chakra-ui/react'
-
 import { Arimo, Roboto } from 'next/font/google'
 
 const robotoFont = Roboto({
@@ -12,9 +10,9 @@ const arimoFont = Arimo({
   weight: ['400', '600'],
 })
 
-export const fonts = extendTheme({
+export const fonts = {
   fonts: {
     heading: robotoFont.style.fontFamily,
     body: arimoFont.style.fontFamily,
   },
-})
+}
