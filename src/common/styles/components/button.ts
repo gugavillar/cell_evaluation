@@ -1,6 +1,4 @@
-import { extendTheme } from '@chakra-ui/react'
-
-export const buttons = extendTheme({
+export const buttons = {
   components: {
     Button: {
       baseStyle: {
@@ -23,4 +21,4 @@ export const buttons = extendTheme({
       },
     },
   },
-})
+}
