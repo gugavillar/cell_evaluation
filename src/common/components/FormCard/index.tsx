@@ -57,6 +57,8 @@ export const FormCard = ({ registeredCells }: HomeProps) => {
     reset()
   }
 
+  const isGenerateButtonDisabled = !isValid || !isDirty || Boolean(qrCodeLink)
+
   return (
     <Box px={8} mt={-20} maxW={['full', '48rem', '54rem']} mx="auto">
       <Card>
@@ -85,7 +87,7 @@ export const FormCard = ({ registeredCells }: HomeProps) => {
             <Button
               width="18.75rem"
               isLoading={isSubmitting}
-              isDisabled={!isValid || !isDirty}
+              isDisabled={isGenerateButtonDisabled}
               type="submit"
             >
               Gerar
