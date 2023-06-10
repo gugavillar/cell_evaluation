@@ -8,7 +8,7 @@ export const buttons = {
       },
       variants: {
         primary: {
-          height: 14,
+          height: [12, 12, 14],
           _hover: {
             _disabled: {
               bg: 'orange.500',
