@@ -25,8 +25,8 @@ const FairIcon = (props: IconProps) => {
 }
 
 FairIcon.defaultProps = {
-  width: ['40px', '70px', '96px'],
-  height: '96px',
+  width: ['40px', '40px', '70px', '95px'],
+  height: ['40px', '40px', '70px', '95px'],
   color: 'green',
 }
 

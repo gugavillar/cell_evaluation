@@ -13,12 +13,14 @@ type CardContainerProps = {
 }
 
 export const CardContainer = ({ cards }: CardContainerProps) => {
-  const isMobile = useBreakpointValue({ base: true, md: false, lg: false })
+  const isMobile = useBreakpointValue({ base: true, md: true, lg: false })
   return (
     <Flex
-      px={['1rem', '2rem', '6.9375rem']}
-      gap="2.25rem"
-      mt="-5.25rem"
+      px={[8, 8, 8, '6.9375rem']}
+      gap={9}
+      mt={-20}
+      maxW={['full', '33rem', '40rem', 'full']}
+      mx="auto"
       flexWrap="wrap"
       align="center"
       justify="center"

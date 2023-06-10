@@ -41,8 +41,8 @@ const MessageIcon = (props: IconProps) => {
 }
 
 MessageIcon.defaultProps = {
-  width: ['40px', '70px', '95px'],
-  height: '95px',
+  width: ['40px', '40px', '70px', '95px'],
+  height: ['40px', '40px', '70px', '95px'],
   color: 'green',
 }
 

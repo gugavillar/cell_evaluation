@@ -18,8 +18,8 @@ const HourglassIcon = (props: IconProps) => {
 }
 
 HourglassIcon.defaultProps = {
-  height: ['40px', '70px', '88px'],
-  width: '67px',
+  height: ['40px', '40px', '70px', '95px'],
+  width: ['40px', '40px', '70px', '95px'],
   color: 'green',
 }
 

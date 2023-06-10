@@ -21,25 +21,25 @@ export const MobileCard = ({ cards }: MobileCardProps) => {
   return (
     <ChakraCard
       bg="white"
-      minW={['full', 'full', '23.875rem']}
-      maxW={['full', 'full', '23.875rem']}
       minH={['11.25rem', '16.375rem']}
       py={8}
       px={6}
       boxShadow="lg"
     >
       <CardHeader alignSelf="center">
-        <Heading>Instruções</Heading>
+        <Heading fontSize="2xl">Instruções</Heading>
       </CardHeader>
-      <CardBody>
-        <Grid templateColumns={'60px 1fr'} rowGap="2rem" columnGap="2rem">
+      <CardBody p={0}>
+        <Grid templateColumns={'60px 1fr'} rowGap="1.5rem" columnGap="1.5rem">
           {cards?.map((card) => (
             <Fragment key={card?.id}>
               <GridItem alignSelf="center" justifySelf="center">
                 {card?.icon}
               </GridItem>
               <GridItem alignSelf="center">
-                <Text align="justify">{card?.text}</Text>
+                <Text align="justify" fontSize={['sm', 'md', 'xl']}>
+                  {card?.text}
+                </Text>
               </GridItem>
             </Fragment>
           ))}

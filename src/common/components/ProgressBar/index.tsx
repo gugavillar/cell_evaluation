@@ -6,7 +6,12 @@ type ProgressBarProps = {
 
 export const ProgressBar = ({ value }: ProgressBarProps) => {
   return (
-    <Box px={8} maxW="62.5rem" my={12} mx="auto">
+    <Box
+      px={[8, 8, 8, '6.9375rem']}
+      maxW={['full', '33rem', '40rem', 'full']}
+      my={[8, 8, 12]}
+      mx="auto"
+    >
       <Text mb={4}>{value}%</Text>
       <Progress value={value} borderRadius={8} />
     </Box>
