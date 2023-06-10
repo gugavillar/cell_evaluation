@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { Fragment, ReactNode } from 'react'
 
-type MobileCardProps = {
+type IconMobileCardProps = {
   cards: Array<{
     id: string
     icon: ReactNode
@@ -17,7 +17,7 @@ type MobileCardProps = {
   }>
 }
 
-export const MobileCard = ({ cards }: MobileCardProps) => {
+export const IconMobileCard = ({ cards }: IconMobileCardProps) => {
   return (
     <ChakraCard
       bg="white"
@@ -27,7 +27,7 @@ export const MobileCard = ({ cards }: MobileCardProps) => {
       boxShadow="lg"
     >
       <CardHeader alignSelf="center">
-        <Heading fontSize="2xl">Instruções</Heading>
+        <Heading fontSize="2xl">Informações</Heading>
       </CardHeader>
       <CardBody p={0}>
         <Grid templateColumns={'60px 1fr'} rowGap="1.5rem" columnGap="1.5rem">

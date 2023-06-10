@@ -32,7 +32,15 @@ export const Question = forwardRef(
         >
           {questionTitle}
         </Heading>
-        <Flex {...group} align="center" justify="center" gap={8} minH={24}>
+        <Flex
+          {...group}
+          align="center"
+          justify="center"
+          gap={6}
+          maxW="28.75rem"
+          mx="auto"
+          minH={24}
+        >
           {SCALE_EVALUATION?.map((value, index) => {
             const radio = getRadioProps({ value })
             return (
@@ -44,12 +52,13 @@ export const Question = forwardRef(
         </Flex>
         <Flex
           align="center"
-          justify="center"
-          gap={56}
+          justify="space-between"
+          maxW="29.75rem"
+          mx="auto"
           fontSize={['md', 'lg', '2xl']}
         >
-          <Text fontWeight={600}>Discordo</Text>
-          <Text fontWeight={600}>Concordo</Text>
+          <Text>Discordo</Text>
+          <Text>Concordo</Text>
         </Flex>
       </Box>
     )

@@ -6,12 +6,12 @@ import {
 } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 
-type CardProps = {
+type IconCardProps = {
   icon: ReactNode
   text: string
 }
 
-export const Card = ({ icon, text }: CardProps) => {
+export const IconCard = ({ icon, text }: IconCardProps) => {
   return (
     <ChakraCard
       bg="white"
