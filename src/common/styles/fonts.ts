@@ -1,18 +1,18 @@
-import { Arimo, Roboto } from 'next/font/google'
+import { Quicksand, Ubuntu } from 'next/font/google'
 
-const robotoFont = Roboto({
+const ubuntuFont = Ubuntu({
   subsets: ['latin'],
-  weight: ['900'],
+  weight: ['400', '700'],
 })
 
-const arimoFont = Arimo({
+const quickSandFont = Quicksand({
   subsets: ['latin'],
   weight: ['400', '600'],
 })
 
 export const fonts = {
   fonts: {
-    heading: robotoFont.style.fontFamily,
-    body: arimoFont.style.fontFamily,
+    heading: ubuntuFont.style.fontFamily,
+    body: quickSandFont.style.fontFamily,
   },
 }
