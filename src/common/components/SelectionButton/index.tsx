@@ -1,6 +1,29 @@
 import { Box, useRadio } from '@chakra-ui/react'
 import { forwardRef } from 'react'
 
+const radioProps = [
+  {
+    size: 14,
+    color: 'red',
+  },
+  {
+    size: 10,
+    color: 'red',
+  },
+  {
+    size: 6,
+    color: 'blackAlpha.400',
+  },
+  {
+    size: 10,
+    color: 'green',
+  },
+  {
+    size: 14,
+    color: 'green',
+  },
+]
+
 export const SelectionButton = forwardRef((props: any, ref: any) => {
   const { getInputProps, getRadioProps } = useRadio(props)
 
@@ -13,18 +36,17 @@ export const SelectionButton = forwardRef((props: any, ref: any) => {
       <Box
         {...radio}
         cursor="pointer"
-        px={6}
-        py={3}
-        bg="teal.500"
-        borderRadius={15}
+        w={radioProps[props.index]?.size}
+        h={radioProps[props.index]?.size}
+        borderRadius="full"
+        border="3px solid"
+        borderColor={radioProps[props.index]?.color}
         fontSize="lg"
         fontWeight={600}
         _checked={{
-          bg: 'purple',
+          bg: radioProps[props.index]?.color,
         }}
-      >
-        {props.children}
-      </Box>
+      />
     </Box>
   )
 })

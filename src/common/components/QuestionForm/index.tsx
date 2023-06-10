@@ -20,7 +20,14 @@ export const QuestionForm = ({
   handleSubmit,
 }: QuestionFormProps) => {
   return (
-    <Box w="full" as="form" onSubmit={handleSubmit}>
+    <Box
+      w="full"
+      as="form"
+      onSubmit={handleSubmit}
+      px={[8, 8, 8, '6.9375rem']}
+      textAlign="center"
+      mb={8}
+    >
       {questions?.map((question) => (
         <Question
           key={question}
@@ -30,8 +37,10 @@ export const QuestionForm = ({
       ))}
       <Button
         type="submit"
+        fontSize="xl"
         mt={6}
-        float="right"
+        width={['full', 'full', 80]}
+        maxWidth={['full', 80, 80]}
         isDisabled={isInvalidForm}
         isLoading={isSendingForm}
       >

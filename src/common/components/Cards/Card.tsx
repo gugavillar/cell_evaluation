@@ -23,7 +23,7 @@ export const Card = ({ icon, text }: CardProps) => {
       boxShadow="lg"
     >
       <CardHeader alignSelf="center">{icon}</CardHeader>
-      <CardBody>
+      <CardBody p={4}>
         <Text align="center">{text}</Text>
       </CardBody>
     </ChakraCard>

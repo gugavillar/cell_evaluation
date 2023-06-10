@@ -1,5 +1,5 @@
 import { Flex, useBreakpointValue } from '@chakra-ui/react'
-import { ReactNode } from 'react'
+import { ReactNode, memo } from 'react'
 
 import { Card } from './Card'
 import { MobileCard } from './MobileCard'
@@ -12,7 +12,7 @@ type CardContainerProps = {
   }>
 }
 
-export const CardContainer = ({ cards }: CardContainerProps) => {
+export const CardContainer = memo(({ cards }: CardContainerProps) => {
   const isMobile = useBreakpointValue({ base: true, md: true, lg: false })
   return (
     <Flex
@@ -32,4 +32,6 @@ export const CardContainer = ({ cards }: CardContainerProps) => {
       )}
     </Flex>
   )
-}
+})
+
+CardContainer.displayName = 'CardContainer'

@@ -1,4 +1,11 @@
-import { Box, BoxProps, HStack, Text, useRadioGroup } from '@chakra-ui/react'
+import {
+  Box,
+  BoxProps,
+  Flex,
+  Heading,
+  Text,
+  useRadioGroup,
+} from '@chakra-ui/react'
 import { SelectionButton } from '../SelectionButton'
 
 import { SCALE_EVALUATION } from '@/common/constants'
@@ -16,18 +23,34 @@ export const Question = forwardRef(
 
     const group = getRootProps()
     return (
-      <Box mt={4} {...props}>
-        <Text>{questionTitle}</Text>
-        <HStack {...group} mt={1}>
-          {SCALE_EVALUATION?.map((value) => {
+      <Box mx="auto" minH={20} my={6} {...props}>
+        <Heading
+          as="h4"
+          textAlign="center"
+          fontSize={['md', 'lg', '2xl']}
+          fontWeight={400}
+        >
+          {questionTitle}
+        </Heading>
+        <Flex {...group} align="center" justify="center" gap={8} minH={24}>
+          {SCALE_EVALUATION?.map((value, index) => {
             const radio = getRadioProps({ value })
             return (
-              <SelectionButton {...radio} key={value} ref={ref}>
+              <SelectionButton {...radio} key={value} ref={ref} index={index}>
                 {value}
               </SelectionButton>
             )
           })}
-        </HStack>
+        </Flex>
+        <Flex
+          align="center"
+          justify="center"
+          gap={56}
+          fontSize={['md', 'lg', '2xl']}
+        >
+          <Text fontWeight={600}>Discordo</Text>
+          <Text fontWeight={600}>Concordo</Text>
+        </Flex>
       </Box>
     )
   },
