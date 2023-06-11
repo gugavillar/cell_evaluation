@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 
 import { FormCard, Header } from '@/common/components'
 import { getAllCells } from '@/common/services'
-import { useInfoMessage } from '@/common/hooks'
+import { useToastToShowMessage } from '@/common/hooks'
 
 export type HomeProps = {
   registeredCells: Array<{
@@ -15,7 +15,7 @@ export type HomeProps = {
 }
 
 export default function Home({ registeredCells, error }: HomeProps) {
-  useInfoMessage({
+  useToastToShowMessage({
     description: 'Falha ao carregar as células, tente novamente',
     status: 'error',
     hasShow: !!error,

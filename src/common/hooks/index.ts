@@ -1,1 +1,1 @@
-export { useInfoMessage } from './useInfoMessage'
+export { useToastToShowMessage } from './useToastToShowMessage'

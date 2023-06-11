@@ -23,6 +23,7 @@ export const FormCard = ({ registeredCells }: HomeProps) => {
   const [qrCodeLink, setQrCodeLink] = useState('')
   const [isGenerate, setIsGenerate] = useState(false)
 
+  const toast = useToast()
   const {
     register,
     handleSubmit,
@@ -34,8 +35,6 @@ export const FormCard = ({ registeredCells }: HomeProps) => {
     },
   })
 
-  const toast = useToast()
-
   const handleGenerateQrCode = async (values: CardFormType) => {
     const qrLink = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${process.env.NEXT_PUBLIC_SITE}/avaliacao/${values?.cell}`
     setIsGenerate(true)
@@ -45,7 +44,7 @@ export const FormCard = ({ registeredCells }: HomeProps) => {
     } catch {
       toast({
         status: 'error',
-        description: 'Falha ao gerar o qrcode',
+        description: 'Falha ao gerar o qrCode',
       })
     } finally {
       setTimeout(() => setIsGenerate(false), 3000)

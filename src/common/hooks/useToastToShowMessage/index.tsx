@@ -8,19 +8,12 @@ type ToastProps = {
   hasShow: boolean
 }
 
-export const useInfoMessage = ({
+export const useToastToShowMessage = ({
   description,
   status,
   hasShow,
 }: ToastProps) => {
-  const toast = useToast({
-    description,
-    status,
-    variant: 'left-accent',
-    isClosable: true,
-    duration: 3000,
-    position: 'top-right',
-  })
+  const toast = useToast({ description, status })
 
   return useEffect(() => {
     hasShow && toast()
