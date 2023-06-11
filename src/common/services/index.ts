@@ -4,3 +4,4 @@ export {
   createEvaluation,
   getEvaluationAndCellName,
 } from './evaluationsServices'
+export { sendAnswers, sendAnswersFauna } from './answersServices'

@@ -32,12 +32,12 @@ type EvaluationProps = {
   token: string
 }
 
-export default function Evaluation({ name }: EvaluationProps) {
+export default function Evaluation({ name, token }: EvaluationProps) {
   return (
     <Fragment>
       <Header title={`Avaliação da célula ${name}`} subtitle="Teste" />
       <IconCardContainer cards={CARDS} />
-      <HandlerQuestionForm />
+      <HandlerQuestionForm token={token} />
     </Fragment>
   )
 }
