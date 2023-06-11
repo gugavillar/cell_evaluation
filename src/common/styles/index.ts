@@ -7,5 +7,5 @@ import { colors } from './colors'
 export const theme = extendTheme({
   ...fonts,
   ...buttons,
-  ...colors,
+  colors,
 })

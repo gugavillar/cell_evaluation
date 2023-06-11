@@ -27,7 +27,7 @@ const FairIcon = (props: IconProps) => {
 FairIcon.defaultProps = {
   width: ['40px', '40px', '70px', '95px'],
   height: ['40px', '40px', '70px', '95px'],
-  color: 'green',
+  color: 'brand.green',
 }
 
 export const Fair = memo(FairIcon)

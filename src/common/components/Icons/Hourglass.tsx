@@ -20,7 +20,7 @@ const HourglassIcon = (props: IconProps) => {
 HourglassIcon.defaultProps = {
   height: ['40px', '40px', '70px', '95px'],
   width: ['40px', '40px', '70px', '95px'],
-  color: 'green',
+  color: 'brand.green',
 }
 
 export const Hourglass = memo(HourglassIcon)

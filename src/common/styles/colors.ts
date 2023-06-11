@@ -1,5 +1,5 @@
 export const colors = {
-  colors: {
+  brand: {
     black: '#000000',
     white: '#ffffff',
     purple: '#7B7FEA',

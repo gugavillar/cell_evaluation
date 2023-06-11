@@ -4,11 +4,11 @@ import { forwardRef } from 'react'
 const radioProps = [
   {
     size: 14,
-    color: 'red',
+    color: 'brand.red',
   },
   {
     size: 10,
-    color: 'red',
+    color: 'brand.red',
   },
   {
     size: 6,
@@ -16,11 +16,11 @@ const radioProps = [
   },
   {
     size: 10,
-    color: 'green',
+    color: 'brand.green',
   },
   {
     size: 14,
-    color: 'green',
+    color: 'brand.green',
   },
 ]
 
