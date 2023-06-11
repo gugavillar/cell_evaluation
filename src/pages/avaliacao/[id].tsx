@@ -30,20 +30,23 @@ type EvaluationProps = {
   name: string
   is_active: boolean
   token: string
+  id: string
 }
 
-export default function Evaluation({ name, token }: EvaluationProps) {
+export default function Evaluation({ name, token, id }: EvaluationProps) {
   return (
     <Fragment>
       <Header title={`Avaliação da célula ${name}`} subtitle="Teste" />
       <IconCardContainer cards={CARDS} />
-      <HandlerQuestionForm token={token} />
+      <HandlerQuestionForm token={token} id={id} />
     </Fragment>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query
+  const { cookies } = context.req
+
   try {
     const { data } = await getEvaluationAndCellName(String(id))
 
@@ -55,7 +58,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     }
 
-    return { props: { ...data } }
+    if (cookies?.[String(id)]) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      }
+    }
+
+    return { props: { ...data, id } }
   } catch {
     return {
       notFound: true,

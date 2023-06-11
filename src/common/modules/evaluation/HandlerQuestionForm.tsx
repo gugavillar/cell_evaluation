@@ -17,9 +17,13 @@ export type HandlerQuestionFormType = {
 
 type HandlerQuestionFormProps = {
   token: string
+  id: string
 }
 
-export const HandlerQuestionForm = ({ token }: HandlerQuestionFormProps) => {
+export const HandlerQuestionForm = ({
+  token,
+  id,
+}: HandlerQuestionFormProps) => {
   const {
     register,
     handleSubmit,
@@ -39,9 +43,10 @@ export const HandlerQuestionForm = ({ token }: HandlerQuestionFormProps) => {
     [formValues],
   )
 
-  const handleConcludeEvaluation = async (values: any) => {
+  const handleConcludeEvaluation = async (values: HandlerQuestionFormType) => {
     const answers = {
       tokenEvaluation: token,
+      id,
       ...values,
     }
 
