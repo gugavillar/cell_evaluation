@@ -14,9 +14,10 @@ import { useForm } from 'react-hook-form'
 
 import { IfComponent, Loader } from '@/common/components'
 import { HomeProps } from '@/pages'
+import { createEvaluation } from '@/common/services'
 
-type CardFormType = {
-  cell: string
+type GenerateEvaluationForm = {
+  cellRef: string
 }
 
 export const FormCard = ({ registeredCells }: HomeProps) => {
@@ -29,17 +30,20 @@ export const FormCard = ({ registeredCells }: HomeProps) => {
     handleSubmit,
     reset,
     formState: { isValid, isDirty, isSubmitting },
-  } = useForm<CardFormType>({
+  } = useForm<GenerateEvaluationForm>({
     defaultValues: {
-      cell: '',
+      cellRef: '',
     },
   })
 
-  const handleGenerateQrCode = async (values: CardFormType) => {
-    const qrLink = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${process.env.NEXT_PUBLIC_SITE}/avaliacao/${values?.cell}`
+  const handleGenerateQrCode = async (values: GenerateEvaluationForm) => {
     setIsGenerate(true)
 
     try {
+      const { qrLink } = await createEvaluation({
+        cellRef: values?.cellRef,
+      })
+
       setQrCodeLink(qrLink)
     } catch {
       toast({
@@ -67,7 +71,7 @@ export const FormCard = ({ registeredCells }: HomeProps) => {
             size="lg"
             variant="flushed"
             mb={6}
-            {...register('cell')}
+            {...register('cellRef')}
           >
             {registeredCells?.map((cell) => (
               <option

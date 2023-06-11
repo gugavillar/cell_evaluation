@@ -1,19 +1,18 @@
+import { Fragment } from 'react'
+import { GetServerSideProps } from 'next'
 import { uuid } from 'uuidv4'
 
-import { CardContainer, Header, ProgressBar } from '@/common/components'
-
-import { HandlerQuestionForm } from '@/common/modules'
-
-import { Fragment } from 'react'
-
 import { Fair, Hourglass, Message } from '@/common/components/Icons'
-import { Divider } from '@chakra-ui/react'
+import { Header, IconCardContainer } from '@/common/components'
+import { HandlerQuestionForm } from '@/common/modules'
+import { getEvaluationAndCellName } from '@/common/services'
+import { validateJWT } from '@/common/validators'
 
 const CARDS = [
   {
     id: uuid(),
     icon: <Hourglass />,
-    text: 'É preciso muito pouco do seu tempo para responder.',
+    text: 'Leva pouco tempo para responder, e é super fácil.',
   },
   {
     id: uuid(),
@@ -27,16 +26,39 @@ const CARDS = [
   },
 ]
 
-export default function Evaluation() {
-  const name = 'flecha'
+type EvaluationProps = {
+  name: string
+  is_active: boolean
+  token: string
+}
 
+export default function Evaluation({ name }: EvaluationProps) {
   return (
     <Fragment>
       <Header title={`Avaliação da célula ${name}`} subtitle="Teste" />
-      <CardContainer cards={CARDS} />
-      <ProgressBar value={30} />
-      <Divider maxW={['75%', '80%']} mx="auto" px={8} borderColor="gray.300" />
+      <IconCardContainer cards={CARDS} />
       <HandlerQuestionForm />
     </Fragment>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { id } = context.query
+  try {
+    const { data } = await getEvaluationAndCellName(String(id))
+
+    const isValidJWT = validateJWT(data.token)
+
+    if (!isValidJWT) {
+      return {
+        notFound: true,
+      }
+    }
+
+    return { props: { ...data } }
+  } catch {
+    return {
+      notFound: true,
+    }
+  }
 }
