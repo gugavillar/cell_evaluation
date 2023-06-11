@@ -1,9 +1,8 @@
-import { Layout } from '@/common/components'
-import { theme } from '@/common/styles'
-
+import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 
-import type { AppProps } from 'next/app'
+import { Layout } from '@/common/components'
+import { theme } from '@/common/styles'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

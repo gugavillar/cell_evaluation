@@ -1,6 +1,5 @@
-import { faunaAPI, faunaQ } from '@/common/api'
-
 import { ReturnCellAPI, ReturnCellsAPI } from '@/common/@types'
+import { faunaAPI, faunaQ } from '@/common/api'
 
 export const getAllCells = () =>
   faunaAPI.query<ReturnCellsAPI>(

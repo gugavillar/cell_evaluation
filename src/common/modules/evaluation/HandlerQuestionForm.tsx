@@ -1,8 +1,8 @@
-import { ProgressBar, QuestionForm } from '@/common/components'
-import { isNullOrUndefined } from '@/common/formatters/values'
-
 import { Fragment, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
+
+import { ProgressBar, QuestionForm } from '@/common/components'
+import { isNullOrUndefined } from '@/common/formatters/values'
 
 const questions = [
   'Como você avalia o conteúdo abordado',

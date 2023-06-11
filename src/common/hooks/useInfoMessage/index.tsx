@@ -1,5 +1,6 @@
-import { ToastProps as ChakraToastProps, useToast } from '@chakra-ui/react'
 import { useEffect } from 'react'
+
+import { ToastProps as ChakraToastProps, useToast } from '@chakra-ui/react'
 
 type ToastProps = {
   description: string
