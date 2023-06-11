@@ -6,6 +6,7 @@ interface CellDatabase {
   }
   data: {
     name: string
+    is_active: boolean
   }
 }
 

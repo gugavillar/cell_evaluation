@@ -71,7 +71,11 @@ export const FormCard = ({ registeredCells }: HomeProps) => {
             {...register('cell')}
           >
             {registeredCells?.map((cell) => (
-              <option key={cell?.id} value={cell?.id}>
+              <option
+                disabled={!cell?.isActive}
+                key={cell?.id}
+                value={cell?.id}
+              >
                 {cell?.label}
               </option>
             ))}
