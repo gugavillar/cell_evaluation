@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { addWeeks } from 'date-fns'
 import { serialize } from 'cookie'
 
+import { TODAY } from '@/common/constants'
 import { sendAnswersFauna } from '@/common/services'
 import { validateJWT } from '@/common/validators'
 
@@ -8,6 +10,8 @@ export const sendAnswersAPI = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
+  const expires = addWeeks(TODAY, 1) // Week
+
   try {
     const { answers } = req.body
 
@@ -23,6 +27,7 @@ export const sendAnswersAPI = async (
         secure: true,
         httpOnly: true,
         path: '/',
+        expires,
       }),
     )
 

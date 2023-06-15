@@ -1,5 +1,6 @@
 import { Fragment, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/router'
 
 import { ProgressBar, QuestionForm } from '@/common/components'
 import { isNullOrUndefined } from '@/common/formatters/values'
@@ -31,6 +32,7 @@ export const HandlerQuestionForm = ({
     formState: { isValid, isDirty, isSubmitting },
   } = useForm<HandlerQuestionFormType>()
   const toast = useToast()
+  const router = useRouter()
 
   const formValues = watch()
 
@@ -50,15 +52,10 @@ export const HandlerQuestionForm = ({
       ...values,
     }
 
-    console.log('handleConcludeEvaluation', { answers })
-
     try {
       const { message } = await sendAnswers({ answers })
       if (message === 'Answers received') {
-        return toast({
-          status: 'success',
-          description: 'Obrigado por responder.',
-        })
+        return router.push('/confirmacao')
       }
       if (message === 'Invalid token') {
         return toast({
