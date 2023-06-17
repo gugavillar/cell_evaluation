@@ -58,15 +58,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 
     if (!data?.is_active) {
+      const message = encodeURI(
+        'A célula que você deseja realizar a avaliação foi desativada, por favor fale com o líder da célula.',
+      )
       return {
-        notFound: true,
+        redirect: {
+          destination: `/informacao?message=${message}`,
+          permanent: false,
+        },
       }
     }
 
     if (!data?.is_open) {
+      const message = encodeURI(
+        'O período de avaliação foi encerrado, obrigado por tentar realizar a avaliação.',
+      )
       return {
         redirect: {
-          destination: '/',
+          destination: `/informacao?message=${message}`,
           permanent: false,
         },
       }
