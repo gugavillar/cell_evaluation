@@ -1,6 +1,6 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
-
 import { memo } from 'react'
+
+import { Box, Heading, Text } from '@chakra-ui/react'
 
 type HeaderProps = {
   title: string

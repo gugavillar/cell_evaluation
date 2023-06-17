@@ -1,3 +1,5 @@
+import { forwardRef } from 'react'
+
 import {
   Box,
   BoxProps,
@@ -6,10 +8,10 @@ import {
   Text,
   useRadioGroup,
 } from '@chakra-ui/react'
-import { SelectionButton } from '../SelectionButton'
 
 import { SCALE_EVALUATION } from '@/common/constants'
-import { forwardRef } from 'react'
+
+import { SelectionButton } from '../SelectionButton'
 
 type QuestionProps = BoxProps & {
   questionTitle: string

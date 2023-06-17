@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+
 import jwt from 'jsonwebtoken'
 
 import { TODAY } from '@/common/constants'

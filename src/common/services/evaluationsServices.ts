@@ -1,9 +1,8 @@
-import { axiosAPI, faunaAPI, faunaQ } from '@/common/api'
-
 import {
   ReturnCreateEvaluation,
   ReturnEvaluationAndCell,
 } from '@/common/@types/'
+import { axiosAPI, faunaAPI, faunaQ } from '@/common/api'
 
 type CreateEvaluationParams = {
   cellRef: string

@@ -1,10 +1,11 @@
+import { ReactNode } from 'react'
+
 import {
   CardBody,
   CardHeader,
   Card as ChakraCard,
   Text,
 } from '@chakra-ui/react'
-import { ReactNode } from 'react'
 
 type IconCardProps = {
   icon: ReactNode
