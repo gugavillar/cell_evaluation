@@ -1,7 +1,5 @@
 import { Fragment } from 'react'
 
-import { Header } from '@/common/components'
-
 import {
   Box,
   Card,
@@ -11,8 +9,9 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
-
 import { CheckCircle } from 'phosphor-react'
+
+import { Header } from '@/common/components'
 
 export default function Confirmation() {
   return (

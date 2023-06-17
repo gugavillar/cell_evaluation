@@ -1,26 +1,25 @@
-import { Fragment } from 'react'
 import { GetServerSideProps } from 'next'
-import { uuid } from 'uuidv4'
+import { Fragment } from 'react'
 
-import { Fair, Hourglass, Message } from '@/common/components/Icons'
 import { Header, IconCardContainer } from '@/common/components'
+import { Fair, Hourglass, Message } from '@/common/components/Icons'
 import { HandlerQuestionForm } from '@/common/modules'
 import { getEvaluationAndCellName } from '@/common/services'
 import { validateJWT } from '@/common/validators'
 
 const CARDS = [
   {
-    id: uuid(),
+    id: 1,
     icon: <Hourglass />,
     text: 'Leva pouco tempo para responder, e é super fácil.',
   },
   {
-    id: uuid(),
+    id: 2,
     icon: <Message />,
     text: 'Por favor, seja honesto em sua resposta. (Mesmo que você não goste...)',
   },
   {
-    id: uuid(),
+    id: 3,
     icon: <Fair />,
     text: 'Tente não deixar um "neutro" em sua resposta.',
   },
@@ -55,6 +54,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     if (!isValidJWT) {
       return {
         notFound: true,
+      }
+    }
+
+    if (!data?.is_active) {
+      return {
+        notFound: true,
+      }
+    }
+
+    if (!data?.is_open) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
       }
     }
 

@@ -1,11 +1,12 @@
-import { Fragment, useMemo } from 'react'
-import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
+import { Fragment, useMemo } from 'react'
+
+import { useToast } from '@chakra-ui/react'
+import { useForm } from 'react-hook-form'
 
 import { ProgressBar, QuestionForm } from '@/common/components'
 import { isNullOrUndefined } from '@/common/formatters/values'
 import { sendAnswers } from '@/common/services'
-import { useToast } from '@chakra-ui/react'
 
 const questions = [
   'Como você avalia o conteúdo abordado',

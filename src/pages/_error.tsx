@@ -1,8 +1,5 @@
-import { Fragment } from 'react'
 import { GetServerSideProps } from 'next'
-import { SmileySad } from 'phosphor-react'
-
-import { Header } from '@/common/components'
+import { Fragment } from 'react'
 
 import {
   Box,
@@ -13,6 +10,9 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
+import { SmileySad } from 'phosphor-react'
+
+import { Header } from '@/common/components'
 
 export default function Error() {
   return (

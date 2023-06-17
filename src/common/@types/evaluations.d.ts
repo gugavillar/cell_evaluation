@@ -7,6 +7,7 @@ interface EvaluationDatabase {
   data: {
     cellRef: string
     token: string
+    is_open: boolean
   }
 }
 
@@ -17,5 +18,6 @@ export interface ReturnEvaluationAndCell {
     name: string
     is_active: boolean
     token: string
+    is_open: boolean
   }
 }

@@ -1,3 +1,5 @@
+import { Fragment, ReactNode } from 'react'
+
 import {
   CardBody,
   CardHeader,
@@ -7,11 +9,10 @@ import {
   Heading,
   Text,
 } from '@chakra-ui/react'
-import { Fragment, ReactNode } from 'react'
 
 type IconMobileCardProps = {
   cards: Array<{
-    id: string
+    id: number
     icon: ReactNode
     text: string
   }>

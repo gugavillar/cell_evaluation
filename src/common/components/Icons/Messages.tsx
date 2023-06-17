@@ -1,5 +1,6 @@
-import { Icon, IconProps } from '@chakra-ui/react'
 import { memo } from 'react'
+
+import { Icon, IconProps } from '@chakra-ui/react'
 
 const MessageIcon = (props: IconProps) => {
   return (

@@ -1,12 +1,13 @@
-import { Flex, useBreakpointValue } from '@chakra-ui/react'
 import { ReactNode, memo } from 'react'
+
+import { Flex, useBreakpointValue } from '@chakra-ui/react'
 
 import { IconCard } from './IconCard'
 import { IconMobileCard } from './IconMobileCard'
 
 type IconCardContainerProps = {
   cards: Array<{
-    id: string
+    id: number
     icon: ReactNode
     text: string
   }>

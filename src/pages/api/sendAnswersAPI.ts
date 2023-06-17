@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { addWeeks } from 'date-fns'
+
 import { serialize } from 'cookie'
+import { addWeeks } from 'date-fns'
 
 import { TODAY } from '@/common/constants'
 import { sendAnswersFauna } from '@/common/services'

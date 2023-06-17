@@ -1,8 +1,7 @@
+import { Box, Button } from '@chakra-ui/react'
 import { UseFormRegister } from 'react-hook-form'
 
 import { Question } from '../Question'
-
-import { Box, Button } from '@chakra-ui/react'
 
 type QuestionFormProps = {
   questions: Array<string>
