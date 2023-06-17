@@ -8,11 +8,6 @@ import { ProgressBar, QuestionForm } from '@/common/components'
 import { isNullOrUndefined } from '@/common/formatters/values'
 import { sendAnswers } from '@/common/services'
 
-const questions = [
-  'Como você avalia o conteúdo abordado',
-  'Como você avalia o conhecimento do líder',
-]
-
 export type HandlerQuestionFormType = {
   [key: string]: string
 }
@@ -20,11 +15,13 @@ export type HandlerQuestionFormType = {
 type HandlerQuestionFormProps = {
   token: string
   id: string
+  questions: Array<string>
 }
 
 export const HandlerQuestionForm = ({
   token,
   id,
+  questions,
 }: HandlerQuestionFormProps) => {
   const {
     register,
