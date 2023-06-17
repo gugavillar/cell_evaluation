@@ -42,7 +42,7 @@ export default function Evaluation({
 }: EvaluationProps) {
   return (
     <Fragment>
-      <Header title={`Avaliação da célula ${name}`} subtitle="Teste" />
+      <Header title={`Avaliação da célula ${name}`} />
       <IconCardContainer cards={CARDS} />
       <HandlerQuestionForm token={token} id={id} questions={questions} />
     </Fragment>

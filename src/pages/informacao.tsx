@@ -21,7 +21,7 @@ export default function Information() {
 
   return (
     <Fragment>
-      <Header title="Igreja Anglicana Vida" subtitle="" />
+      <Header title="Igreja Anglicana Vida" />
       <Box maxW={['full', '48rem', '54rem']} p={6} mx="auto">
         <Card mt={-20}>
           <CardBody>
