@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { ProgressBar, QuestionForm } from '@/common/components'
 import { isNullOrUndefined } from '@/common/formatters/values'
 import { sendAnswers } from '@/common/services'
+import { getEvaluationErrorMessages } from '@/common/validators/errors'
 
 export type HandlerQuestionFormType = {
   [key: string]: string
@@ -52,19 +53,18 @@ export const HandlerQuestionForm = ({
 
     try {
       const { message } = await sendAnswers({ answers })
+
       if (message === 'Answers received') {
         return router.push('/confirmacao')
       }
-      if (message === 'Invalid token') {
-        return toast({
-          status: 'error',
-          description: 'Chave de validação inválida, tente novamente.',
-        })
-      }
-    } catch {
+    } catch (error: any) {
+      console.log(error?.response?.data?.message)
       toast({
         status: 'error',
-        description: 'Falha ao enviar as respostas, tente novamente.',
+        description: getEvaluationErrorMessages(
+          error?.response?.data?.message,
+          'Falha ao enviar as respostas, tente novamente.',
+        ),
       })
     }
   }

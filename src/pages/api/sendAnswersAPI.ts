@@ -4,7 +4,8 @@ import { serialize } from 'cookie'
 import { addWeeks } from 'date-fns'
 
 import { TODAY } from '@/common/constants'
-import { sendAnswersFauna } from '@/common/services'
+import { evaluationErrorsMessages } from '@/common/constants/evaluationMessages'
+import { getEvaluationAndCellName, sendAnswersFauna } from '@/common/services'
 import { validateJWT } from '@/common/validators'
 
 export const sendAnswersAPI = async (
@@ -18,7 +19,16 @@ export const sendAnswersAPI = async (
 
     const isValidToken = validateJWT(answers?.tokenEvaluation)
 
-    if (!isValidToken) return res.status(401).json({ message: 'Invalid token' })
+    if (!isValidToken)
+      return res.status(401).json({ message: evaluationErrorsMessages[0] })
+
+    const { data } = await getEvaluationAndCellName(answers?.id)
+
+    if (!data?.is_active)
+      return res.status(400).json({ message: evaluationErrorsMessages[1] })
+
+    if (!data?.is_open)
+      return res.status(400).json({ message: evaluationErrorsMessages[2] })
 
     await sendAnswersFauna(answers)
 
