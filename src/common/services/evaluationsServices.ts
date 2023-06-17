@@ -15,6 +15,7 @@ export const createEvaluationFauna = (evaluation: CreateEvaluationParams) =>
       data: {
         cellRef: faunaQ.Ref(faunaQ.Collection('cells'), evaluation?.cellRef),
         token: evaluation?.token,
+        is_open: true,
       },
     }),
   )
@@ -46,9 +47,29 @@ export const getEvaluationAndCellName = (evaluationRef: string) =>
               faunaQ.Ref(faunaQ.Collection('evaluations'), evaluationRef),
             ),
           ),
+          is_open: faunaQ.Select(
+            ['data', 'is_open'],
+            faunaQ.Get(
+              faunaQ.Ref(faunaQ.Collection('evaluations'), evaluationRef),
+            ),
+          ),
         },
       },
     ),
+  )
+
+export const deleteEvaluation = (evaluationRef: string) =>
+  faunaAPI.query(
+    faunaQ.Delete(faunaQ.Ref(faunaQ.Collection('evaluations'), evaluationRef)),
+  )
+
+export const closeEvaluation = (evaluationRef: string) =>
+  faunaAPI.query(
+    faunaQ.Update(faunaQ.Ref(faunaQ.Collection('evaluations'), evaluationRef), {
+      data: {
+        is_open: false,
+      },
+    }),
   )
 
 type CreateEvaluationReturn = {

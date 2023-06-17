@@ -57,6 +57,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     }
 
+    if (!data?.is_active) {
+      return {
+        notFound: true,
+      }
+    }
+
+    if (!data?.is_open) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      }
+    }
+
     if (cookies?.[String(id)]) {
       return {
         redirect: {
