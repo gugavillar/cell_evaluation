@@ -5,6 +5,7 @@ import { Header, IconCardContainer } from '@/common/components'
 import { Fair, Hourglass, Message } from '@/common/components/Icons'
 import { HandlerQuestionForm } from '@/common/modules'
 import { getEvaluationAndCellName } from '@/common/services'
+import { getAllQuestions } from '@/common/services/questionsServices'
 import { validateJWT } from '@/common/validators'
 
 const CARDS = [
@@ -30,14 +31,20 @@ type EvaluationProps = {
   is_active: boolean
   token: string
   id: string
+  questions: Array<string>
 }
 
-export default function Evaluation({ name, token, id }: EvaluationProps) {
+export default function Evaluation({
+  name,
+  token,
+  id,
+  questions,
+}: EvaluationProps) {
   return (
     <Fragment>
       <Header title={`Avaliação da célula ${name}`} subtitle="Teste" />
       <IconCardContainer cards={CARDS} />
-      <HandlerQuestionForm token={token} id={id} />
+      <HandlerQuestionForm token={token} id={id} questions={questions} />
     </Fragment>
   )
 }
@@ -90,7 +97,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     }
 
-    return { props: { ...data, id } }
+    const response = await getAllQuestions()
+
+    const questions = response?.data
+      ?.filter((question) => question?.data?.is_active)
+      ?.map((question) => question?.data?.question)
+
+    return { props: { ...data, id, questions } }
   } catch {
     return {
       notFound: true,
