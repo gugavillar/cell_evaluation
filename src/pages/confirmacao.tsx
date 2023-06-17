@@ -16,10 +16,7 @@ import { Header } from '@/common/components'
 export default function Confirmation() {
   return (
     <Fragment>
-      <Header
-        title="Igreja Anglicana Vida"
-        subtitle="Obrigado por participar"
-      />
+      <Header title="Igreja Anglicana Vida" />
       <Box maxW={['full', '48rem', '54rem']} p={6} mx="auto">
         <Card mt={-20}>
           <CardBody>

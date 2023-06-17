@@ -2,9 +2,11 @@ import { memo } from 'react'
 
 import { Box, Heading, Text } from '@chakra-ui/react'
 
+import { IfComponent } from '../IfComponent'
+
 type HeaderProps = {
   title: string
-  subtitle: string
+  subtitle?: string
 }
 
 export const Header = memo(({ title, subtitle }: HeaderProps) => {
@@ -19,9 +21,14 @@ export const Header = memo(({ title, subtitle }: HeaderProps) => {
         <Heading as="h1" mb={4} fontSize={['3xl', '4xl', '5xl']}>
           {title}
         </Heading>
-        <Text as="h3" fontSize={['2xl', '2xl', '3xl']}>
-          {subtitle}
-        </Text>
+        <IfComponent
+          condition={!!subtitle}
+          component={
+            <Text as="h3" fontSize={['2xl', '2xl', '3xl']}>
+              {subtitle}
+            </Text>
+          }
+        />
       </Box>
     </Box>
   )
