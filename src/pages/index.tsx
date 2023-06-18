@@ -1,8 +1,9 @@
 import { GetServerSideProps } from 'next'
 import { Fragment } from 'react'
 
-import { FormCard, Header } from '@/common/components'
+import { Header } from '@/common/components'
 import { useToastToShowMessage } from '@/common/hooks'
+import { ContainerSelection } from '@/common/modules/home/ContainerSelection'
 import { getAllCells } from '@/common/services'
 
 export type HomeProps = {
@@ -24,7 +25,7 @@ export default function Home({ registeredCells, error }: HomeProps) {
   return (
     <Fragment>
       <Header title="Igreja Anglicana Vida" subtitle="Avaliação de células" />
-      <FormCard registeredCells={registeredCells} />
+      <ContainerSelection registeredCells={registeredCells} />
     </Fragment>
   )
 }
