@@ -1,7 +1,14 @@
 import { GetServerSideProps } from 'next'
-import { Fragment } from 'react'
+import { Fragment, useRef } from 'react'
 
-import { FormCard, Header } from '@/common/components'
+import { useBoolean, Button } from '@chakra-ui/react'
+
+import {
+  CustomWebcam,
+  FormCard,
+  Header,
+  IfComponent,
+} from '@/common/components'
 import { useToastToShowMessage } from '@/common/hooks'
 import { getAllCells } from '@/common/services'
 
@@ -15,6 +22,16 @@ export type HomeProps = {
 }
 
 export default function Home({ registeredCells, error }: HomeProps) {
+  const [flag, setFlag] = useBoolean()
+  const videoRef = useRef<any>(null)
+
+  const stopCam = () => {
+    const stream = videoRef?.current?.stream
+    const tracks = stream.getTracks()
+    tracks.forEach((track: any) => track?.stop())
+    setFlag?.off()
+  }
+
   useToastToShowMessage({
     description: 'Falha ao carregar as células, tente novamente',
     status: 'error',
@@ -25,6 +42,12 @@ export default function Home({ registeredCells, error }: HomeProps) {
     <Fragment>
       <Header title="Igreja Anglicana Vida" subtitle="Avaliação de células" />
       <FormCard registeredCells={registeredCells} />
+      <Button onClick={setFlag.on}>OpenCamera</Button>
+      <Button onClick={stopCam}>CloseCamera</Button>
+      <IfComponent
+        condition={flag}
+        component={<CustomWebcam ref={videoRef} />}
+      />
     </Fragment>
   )
 }
