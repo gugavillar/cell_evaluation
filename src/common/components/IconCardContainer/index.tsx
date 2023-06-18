@@ -13,6 +13,12 @@ type IconCardContainerProps = {
   }>
 }
 
+const iconCardProps = {
+  minW: ['full', '23.875rem'],
+  maxW: ['full', '23.875rem'],
+  minH: ['11.25rem', '16.375rem'],
+}
+
 export const IconCardContainer = memo(({ cards }: IconCardContainerProps) => {
   const isMobile = useBreakpointValue({ base: true, md: true, lg: false })
   return (
@@ -29,7 +35,9 @@ export const IconCardContainer = memo(({ cards }: IconCardContainerProps) => {
       {isMobile ? (
         <IconMobileCard cards={cards} />
       ) : (
-        cards?.map(({ id, ...rest }) => <IconCard key={id} {...rest} />)
+        cards?.map(({ id, ...rest }) => (
+          <IconCard key={id} {...rest} {...iconCardProps} />
+        ))
       )}
     </Flex>
   )
