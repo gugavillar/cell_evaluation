@@ -9,9 +9,9 @@ export const ReadQrcode = () => {
   const videoRef = useRef<any>(null)
 
   const stopCam = () => {
-    const stream: MediaStream = videoRef?.current?.stream
-    const tracks = stream.getTracks()
-    tracks.forEach((track) => track?.stop())
+    console.log(videoRef?.current)
+    videoRef?.current?.clearComponent()
+    videoRef?.current?.stopCamera()
     setIsOpenCam.off()
   }
 
