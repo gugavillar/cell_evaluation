@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 import { IsLeader } from '@/common/@types'
 import { FormCard } from '@/common/components'
@@ -12,13 +12,15 @@ type ContainerSelectionProps = {
     label: string
     isActive: boolean
   }>
+  isLeader: null | IsLeader
+  setIsLeader: Dispatch<SetStateAction<null | IsLeader>>
 }
 
 export const ContainerSelection = ({
   registeredCells,
+  isLeader,
+  setIsLeader,
 }: ContainerSelectionProps) => {
-  const [isLeader, setIsLeader] = useState<null | IsLeader>(null)
-
   if (isLeader === 'leader')
     return <FormCard registeredCells={registeredCells} />
 
