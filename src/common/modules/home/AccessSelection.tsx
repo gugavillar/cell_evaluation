@@ -22,16 +22,7 @@ export const AccessSelection = ({ setIsLeader }: AccessSelectionProps) => {
   const handleSetLeader = (type: IsLeader) => setIsLeader(type)
 
   return (
-    <Flex
-      px={[8, 8, 8, '6.9375rem']}
-      gap={16}
-      mt={-20}
-      maxW={['full', '33rem', '40rem', 'full']}
-      mx="auto"
-      flexWrap="wrap"
-      align="center"
-      justify="center"
-    >
+    <Flex gap={16} flexWrap="wrap" align="center" justify="center">
       <IconCard
         icon={<UsersThree {...iconProps} />}
         text="Líder"

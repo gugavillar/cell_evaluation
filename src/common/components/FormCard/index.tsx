@@ -117,7 +117,7 @@ export const FormCard = ({ registeredCells }: HomeProps) => {
   const buttonText = !qrCodeLink ? 'Gerar' : 'Finalizar'
 
   return (
-    <Box px={8} mt={-20} maxW={['full', '48rem', '54rem']} mx="auto">
+    <Box maxW={['full', '48rem', '54rem']} mx="auto">
       <Card>
         <CardBody as="form" onSubmit={handleSubmit(handleGenerateQrCode)}>
           <Select

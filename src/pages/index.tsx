@@ -1,7 +1,11 @@
 import { GetServerSideProps } from 'next'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 
-import { Header } from '@/common/components'
+import { Box, Button } from '@chakra-ui/react'
+import { ArrowLeft } from 'phosphor-react'
+
+import { IsLeader } from '@/common/@types'
+import { Header, IfComponent } from '@/common/components'
 import { useToastToShowMessage } from '@/common/hooks'
 import { ContainerSelection } from '@/common/modules/home/ContainerSelection'
 import { getAllCells } from '@/common/services'
@@ -21,11 +25,40 @@ export default function Home({ registeredCells, error }: HomeProps) {
     status: 'error',
     hasShow: !!error,
   })
+  const [isLeader, setIsLeader] = useState<null | IsLeader>(null)
+
+  const handleBackButton = () => setIsLeader(null)
+
+  const isLeaderNull = isLeader === null
 
   return (
     <Fragment>
       <Header title="Igreja Anglicana Vida" subtitle="Avaliação de células" />
-      <ContainerSelection registeredCells={registeredCells} />
+      <Box
+        px={[8, 8, 8, '6.9375rem']}
+        mt={isLeaderNull ? -20 : -24}
+        maxW={['full', '33rem', '40rem', 'full']}
+        mx="auto"
+      >
+        <IfComponent
+          condition={!isLeaderNull}
+          component={
+            <Button
+              variant="ghost"
+              leftIcon={<ArrowLeft width={16} height={16} />}
+              onClick={handleBackButton}
+              mb={6}
+            >
+              Voltar
+            </Button>
+          }
+        />
+        <ContainerSelection
+          registeredCells={registeredCells}
+          isLeader={isLeader}
+          setIsLeader={setIsLeader}
+        />
+      </Box>
     </Fragment>
   )
 }

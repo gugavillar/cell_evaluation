@@ -15,6 +15,15 @@ export const buttons = {
             },
           },
         },
+        ghost: {
+          height: [12, 12, 14],
+          bg: 'none',
+          _hover: { bg: 'none' },
+          _active: { bg: 'none' },
+          _focusVisible: { outline: 'none' },
+          width: 'inherit',
+          px: 0,
+        },
       },
       defaultProps: {
         variant: 'primary',
