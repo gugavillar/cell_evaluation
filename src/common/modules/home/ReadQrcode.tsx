@@ -9,9 +9,8 @@ export const ReadQrcode = () => {
   const videoRef = useRef<any>(null)
 
   const stopCam = () => {
-    console.log(videoRef?.current)
-    videoRef?.current?.clearComponent()
     videoRef?.current?.stopCamera()
+    videoRef?.current?.clearComponent()
     setIsOpenCam.off()
   }
 
@@ -20,10 +19,10 @@ export const ReadQrcode = () => {
   return (
     <Box maxW="40rem" mx="auto" mt={6}>
       <Flex align="center" justify="space-evenly" gap={6} flex="wrap" px={6}>
-        <Button onClick={openCam} width={40}>
+        <Button onClick={openCam} width={40} isDisabled={isOpenCam}>
           Abrir câmera
         </Button>
-        <Button onClick={stopCam} width={40}>
+        <Button onClick={stopCam} width={40} isDisabled={!isOpenCam}>
           Fechar câmera
         </Button>
       </Flex>

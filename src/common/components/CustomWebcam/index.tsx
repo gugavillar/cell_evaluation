@@ -40,6 +40,7 @@ export const CustomWebcam = forwardRef(
           onScan={handleScanner}
           onError={handleErrorScan}
           style={videoStyles}
+          delay={false}
         />
       </Flex>
     )
