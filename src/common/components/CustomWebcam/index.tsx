@@ -34,6 +34,7 @@ export const CustomWebcam = forwardRef(
           onRead={handleScanner}
           width={320}
           height={240}
+          videoConstraints={{ facingMode: 'environment' }}
         />
       </Flex>
     )
