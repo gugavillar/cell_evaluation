@@ -9,18 +9,12 @@ export const ReadQrcode = () => {
   const videoRef = useRef<any>(null)
 
   const stopCam = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true })
-    const tracks = stream.getTracks()
-    tracks.forEach((track) => track?.stop())
     setIsOpenCam.off()
   }
 
   const openCam = async () => {
-    console.log(videoRef?.current)
     setIsOpenCam.on()
   }
-
-  console.log(videoRef?.current)
 
   return (
     <Box maxW="40rem" mx="auto" mt={6}>

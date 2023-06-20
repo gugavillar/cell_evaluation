@@ -2,29 +2,22 @@ import { useRouter } from 'next/router'
 import { ForwardedRef, forwardRef } from 'react'
 
 import { Flex, FlexProps } from '@chakra-ui/react'
-import QrCodeReader from 'react-qrcode-reader'
+import QrCodeReader, { QRCode } from 'react-qrcode-reader'
 
 type CustomWebcamProps = FlexProps
 
-/* const videoStyles = {
-  width: 300,
-  paddingLeft: '24px',
-  paddingRight: '24px',
-  marginTop: '32px',
-  display: 'flex',
-  alignItens: 'center',
-  marginRight: 'auto',
-  marginLeft: 'auto',
-} */
+const videoConstraints = {
+  facingMode: 'environment',
+}
 
 export const CustomWebcam = forwardRef(
   (props: CustomWebcamProps, ref: ForwardedRef<any>) => {
     const router = useRouter()
 
-    const handleScanner = async (result: any) => {
-      if (!result) return
+    const handleScanner = async (result: QRCode) => {
+      if (!result?.data) return
 
-      router.push(result)
+      router.push(result?.data)
     }
 
     return (
@@ -34,7 +27,7 @@ export const CustomWebcam = forwardRef(
           onRead={handleScanner}
           width={320}
           height={240}
-          videoConstraints={{ facingMode: 'environment' }}
+          videoConstraints={videoConstraints}
         />
       </Flex>
     )
