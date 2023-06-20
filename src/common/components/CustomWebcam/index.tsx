@@ -1,46 +1,33 @@
 import { useRouter } from 'next/router'
 import { ForwardedRef, forwardRef } from 'react'
 
-import { Flex, FlexProps, useToast } from '@chakra-ui/react'
-import QrReader from 'react-qr-reader'
+import { Flex, FlexProps } from '@chakra-ui/react'
+import QrCodeReader, { QRCode } from 'react-qrcode-reader'
 
 type CustomWebcamProps = FlexProps
 
-const videoStyles = {
-  width: 400,
-  height: 400,
-  paddingLeft: '24px',
-  paddingRight: '24px',
+const videoConstraints = {
+  facingMode: 'environment',
 }
 
 export const CustomWebcam = forwardRef(
   (props: CustomWebcamProps, ref: ForwardedRef<any>) => {
     const router = useRouter()
-    const toast = useToast()
 
-    const handleScanner = async (result: any) => {
-      if (!result) return
+    const handleScanner = async (result: QRCode) => {
+      if (!result?.data) return
 
-      router.push(result)
-    }
-
-    const handleErrorScan = () => {
-      toast({
-        status: 'error',
-        description: 'Ocorreu uma falha ao ler o qr code, tente novamente.',
-      })
+      router.push(result?.data)
     }
 
     return (
       <Flex {...props}>
-        <QrReader
-          facingMode="environment"
-          resolution={1000}
-          ref={ref}
-          onScan={handleScanner}
-          onError={handleErrorScan}
-          style={videoStyles}
-          delay={3000}
+        <QrCodeReader
+          delay={1500}
+          onRead={handleScanner}
+          width={320}
+          height={240}
+          videoConstraints={videoConstraints}
         />
       </Flex>
     )

@@ -8,9 +8,13 @@ export const ReadQrcode = () => {
   const [isOpenCam, setIsOpenCam] = useBoolean()
   const videoRef = useRef<any>(null)
 
-  const stopCam = () => setIsOpenCam.off()
+  const stopCam = async () => {
+    setIsOpenCam.off()
+  }
 
-  const openCam = () => setIsOpenCam.on()
+  const openCam = async () => {
+    setIsOpenCam.on()
+  }
 
   return (
     <Box maxW="40rem" mx="auto" mt={6}>
